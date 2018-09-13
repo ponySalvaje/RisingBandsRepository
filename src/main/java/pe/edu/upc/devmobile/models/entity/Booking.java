@@ -45,7 +45,6 @@ public class Booking implements Serializable {
 	private Integer endHour;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="studioroom_id")
 	private StudioRoom studioRoom;
 	
 	@ManyToOne(fetch=FetchType.LAZY)

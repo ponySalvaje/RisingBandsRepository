@@ -15,8 +15,8 @@ import pe.edu.upc.devmobile.models.entity.Genre;
 import pe.edu.upc.devmobile.models.entity.Musician;
 
 @Entity
-@Table(name="MusicGenres")
-public class MusicGenre implements Serializable {
+@Table(name="MusicianGenres")
+public class MusicianGenre implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
