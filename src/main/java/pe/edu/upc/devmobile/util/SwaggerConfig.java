@@ -29,7 +29,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 				.description("\"REST API for Rising Bands\"").version("1.0.0")
 				.license("Apache License Version 2.0").licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
 				.contact(
-						new Contact("Alvaro Felix Toconas Ocaña", "github.com/drassleon", "toconasalvaro@gmail.com"))
+						new Contact("Alvaro Felix Toconas Ocaña", "https://www.github.com/drassleon", "toconasalvaro@gmail.com"))
 				.build();
 	}
   @Override
