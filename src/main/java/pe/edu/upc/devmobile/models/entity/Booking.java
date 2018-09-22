@@ -3,6 +3,7 @@ package pe.edu.upc.devmobile.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import pe.edu.upc.devmobile.models.entity.Band;
 import pe.edu.upc.devmobile.models.entity.StudioRoom;
@@ -31,24 +34,31 @@ public class Booking implements Serializable {
 	private Long id;
 	
 	@NotNull
+	@Column(name="book_date")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	private Date bookDate;
 	
 	@NotNull
+	@Column(name="start_hour")
 	private Integer startHour;
 	
 	@NotNull
+	@Column(name="amount_hour")
 	private Integer amountHour;
 	
 	@NotNull
+	@Column(name="end_hour")
 	private Integer endHour;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="studio_room_id")
+	@JsonBackReference
 	private StudioRoom studioRoom;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="band_id")
+	@JsonBackReference
 	private Band band;
 
 	//Access methods

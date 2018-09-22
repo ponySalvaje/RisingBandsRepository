@@ -3,6 +3,7 @@ package pe.edu.upc.devmobile.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,17 +27,21 @@ public class MusicStudioOwner implements Serializable {
 	private Long id;
 	
 	@NotNull
+	@Column(name="first_name")
 	private String firstName;
 	
 	@NotNull
+	@Column(name="last_name")
 	private String lastName;
 	
 	@NotNull
+	@Column(name="birth_date")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	private Date birthDate;
 	
 	@NotNull
+	@Column(name="phone_number")
 	private String phoneNumber;
 	
 	@NotNull

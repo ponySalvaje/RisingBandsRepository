@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import pe.edu.upc.devmobile.models.entity.Instrument;
 import pe.edu.upc.devmobile.models.entity.Musician;
 
@@ -26,10 +28,12 @@ public class MusicianInstrument implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="musician_id")
+	@JsonBackReference
 	private Musician musician;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="instrument_id")
+	@JsonBackReference
 	private Instrument instrument;
 	
 	//Access methods

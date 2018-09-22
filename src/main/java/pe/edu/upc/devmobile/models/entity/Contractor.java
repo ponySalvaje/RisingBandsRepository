@@ -1,20 +1,15 @@
 package pe.edu.upc.devmobile.models.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-
-import pe.edu.upc.devmobile.models.entity.Event;
 
 @Entity
 @Table(name="Contractors")
@@ -27,23 +22,23 @@ public class Contractor implements Serializable {
 	private Long id;
 	
 	@NotNull
+	@Column(name="first_name")
 	private String firstName;
 	
 	@NotNull
+	@Column(name="last_name")
 	private String lastName;
 	
 	@NotNull
 	private String dni;
 	
 	@NotNull
+	@Column(name="phone_number")
 	private String phoneNumber;
 	
 	@NotNull
 	@Email
 	private String email;
-	
-	@OneToMany(mappedBy="contractor", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Event> events;
 	
 	//Access methods
 
@@ -93,17 +88,5 @@ public class Contractor implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public List<Event> getEvents() {
-		return events;
-	}
-
-	public void setEvents(List<Event> events) {
-		this.events = events;
-	}
-	
-	public void addEvents(Event event) {
-		this.events.add(event);
 	}
 }
