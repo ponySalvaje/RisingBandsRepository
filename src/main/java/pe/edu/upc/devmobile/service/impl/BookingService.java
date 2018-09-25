@@ -5,35 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upc.devmobile.models.dao.IBookingDAO;
 import pe.edu.upc.devmobile.models.entity.Booking;
+import pe.edu.upc.devmobile.models.repository.BookingRepository;
 import pe.edu.upc.devmobile.service.inter.IBookingService;
 @Service
 public class BookingService implements IBookingService {
 	@Autowired
-	IBookingDAO bookingDao;
+	BookingRepository bookingRepository;
 	@Override
 	public List<Booking> findAll() {
 		// TODO Auto-generated method stub
-		return bookingDao.findAll();
+		return bookingRepository.findAll();
 	}
 
 	@Override
 	public Booking findById(Long id) {
 		// TODO Auto-generated method stub
-		return bookingDao.findById(id).orElse(null);
+		return bookingRepository.findById(id).orElse(null);
 	}
 
 	@Override
 	public void save(Booking t) {
 		// TODO Auto-generated method stub
-		bookingDao.save(t);
+		bookingRepository.save(t);
 	}
 
 	@Override
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
-		bookingDao.deleteById(id);
+		bookingRepository.deleteById(id);
 
 	}
 

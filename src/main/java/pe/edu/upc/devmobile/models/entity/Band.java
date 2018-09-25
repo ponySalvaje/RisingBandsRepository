@@ -36,9 +36,9 @@ public class Band implements Serializable {
 	@Column(name="music_respository")
 	private String musicRepository;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="genre_id")
-	@JsonBackReference
+	//@JsonBackReference
 	private Genre genre;
 	
 	//Access methods

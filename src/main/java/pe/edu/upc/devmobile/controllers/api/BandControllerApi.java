@@ -15,17 +15,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pe.edu.upc.devmobile.models.entity.Band;
 import pe.edu.upc.devmobile.service.impl.BandService;
+import pe.edu.upc.devmobile.service.impl.GenreService;
 import pe.edu.upc.devmobile.service.inter.IBandService;
+import pe.edu.upc.devmobile.service.inter.IGenreService;
 @RestController
 @RequestMapping("/api/band")
 public class BandControllerApi {
 	@Autowired
 	IBandService bandService=new BandService();
+	@Autowired
+	IGenreService genreService=new GenreService();
 
-	@RequestMapping(value="/list",method = RequestMethod.GET)
+	@RequestMapping(value="/",method = RequestMethod.GET)
 	   @ResponseBody
 	   public List<Band> findAll() {
-	       return bandService.findAll();
+	       List<Band> bandas = bandService.findAll();
+	    
+	       
+	       return bandas;
 	   }
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
