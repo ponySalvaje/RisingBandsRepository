@@ -17,49 +17,49 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import pe.edu.upc.devmobile.models.entity.Event;
-import pe.edu.upc.devmobile.service.impl.EventService;
-import pe.edu.upc.devmobile.service.inter.IEventService;
+import pe.edu.upc.devmobile.models.entity.MusicStudioOwner;
+import pe.edu.upc.devmobile.service.impl.MusicStudioOwnerService;
+import pe.edu.upc.devmobile.service.inter.IMusicStudioOwnerService;
 
 @RestController
-@RequestMapping("/api/event")
-public class EventControllerApi {
+@RequestMapping("/api/musicstudioowner")
+public class MusicStudioOwnerControllerApi {
 	@Autowired
-	IEventService eventService=new EventService();
+	IMusicStudioOwnerService musicstudioownerService=new MusicStudioOwnerService();
 
 	@RequestMapping(value="/",method = RequestMethod.GET)
 	   @ResponseBody
-	   public List<Event> findAll() {
-	       return eventService.findAll();
+	   public List<MusicStudioOwner> findAll() {
+	       return musicstudioownerService.findAll();
 	   }
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	   @ResponseBody
-	   public Event findOne(@PathVariable("id") Long id) {
-	       return eventService.findById( id );
+	   public MusicStudioOwner findOne(@PathVariable("id") Long id) {
+	       return musicstudioownerService.findById( id );
 	   }
 	 
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Object> create(@RequestBody Event event) {
+	public ResponseEntity<Object> create(@RequestBody MusicStudioOwner musicstudioowner) {
 		
-		eventService.save(event);
+		musicstudioownerService.save(musicstudioowner);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(event.getId()).toUri();
+				.buildAndExpand(musicstudioowner.getId()).toUri();
 
 		return ResponseEntity.created(location).build();
 
 	}
 	 
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@RequestBody Event event, @PathVariable long id) {
+	public ResponseEntity<Object> update(@RequestBody MusicStudioOwner musicstudioowner, @PathVariable long id) {
 
-		Event eventAux=eventService.findById(id);
-		if(eventAux!=null)
+		MusicStudioOwner musicstudioownerAux=musicstudioownerService.findById(id);
+		if(musicstudioownerAux!=null)
 		{
-			event.setId(id);
-			eventService.save(event);
+			musicstudioowner.setId(id);
+			musicstudioownerService.save(musicstudioowner);
 			return ResponseEntity.noContent().build();
 
 		}
@@ -70,7 +70,7 @@ public class EventControllerApi {
 	   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	   @ResponseStatus(HttpStatus.OK)
 	   public void delete(@PathVariable("id") Long id) {
-	       eventService.deleteById(id);
+	       musicstudioownerService.deleteById(id);
 	   }
 
 }

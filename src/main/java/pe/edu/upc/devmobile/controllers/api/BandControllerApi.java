@@ -1,30 +1,31 @@
 package pe.edu.upc.devmobile.controllers.api;
 
+import java.net.URI;
 import java.util.List;
 
-import org.assertj.core.util.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import pe.edu.upc.devmobile.models.entity.Band;
 import pe.edu.upc.devmobile.service.impl.BandService;
-import pe.edu.upc.devmobile.service.impl.GenreService;
 import pe.edu.upc.devmobile.service.inter.IBandService;
-import pe.edu.upc.devmobile.service.inter.IGenreService;
 @RestController
 @RequestMapping("/api/band")
 public class BandControllerApi {
 	@Autowired
 	IBandService bandService=new BandService();
-	@Autowired
-	IGenreService genreService=new GenreService();
+	
 
 	@RequestMapping(value="/",method = RequestMethod.GET)
 	   @ResponseBody
@@ -40,24 +41,33 @@ public class BandControllerApi {
 	   public Band findOne(@PathVariable("id") Long id) {
 	       return bandService.findById( id );
 	   }
+	@PostMapping("/")
+	public ResponseEntity<Object> create(@RequestBody Band band) {
+		
+		bandService.save(band);
+		
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(band.getId()).toUri();
+
+		return ResponseEntity.created(location).build();
+
+	}
 	 
-	   @RequestMapping(value="/",method = RequestMethod.POST)
-	   @ResponseStatus(HttpStatus.CREATED)
-	   @ResponseBody
-	   public void create(@RequestBody Band resource) {
-	       Preconditions.checkNotNull(resource);
-	       bandService.save(resource);
-	   }
-	 
-	   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	   @ResponseStatus(HttpStatus.OK)
-	   public void update(@PathVariable( "id" ) Long id, @RequestBody Band resource) {
-	       Preconditions.checkNotNull(resource);
-	       Band foundBand =bandService.findById( resource.getId());
-	       if(foundBand!=null)
-	       bandService.save(foundBand);
-	   }
-	 
+	@PutMapping("/{id}")
+	public ResponseEntity<Object> update(@RequestBody Band band, @PathVariable long id) {
+
+		Band bandAux=bandService.findById(id);
+		if(bandAux!=null)
+		{
+			band.setId(id);
+			bandService.save(band);
+			return ResponseEntity.noContent().build();
+
+		}
+		return ResponseEntity.notFound().build();
+
+	}
+
 	   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	   @ResponseStatus(HttpStatus.OK)
 	   public void delete(@PathVariable("id") Long id) {

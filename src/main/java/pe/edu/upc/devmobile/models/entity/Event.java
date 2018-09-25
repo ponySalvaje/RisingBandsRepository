@@ -33,14 +33,14 @@ public class Event implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="contractor_id")
-	@JsonManagedReference
+	//@JsonManagedReference
 	private Contractor contractor;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="band_id")
-	@JsonManagedReference
+	//@JsonManagedReference
 	private Band band;
 	
 	@NotNull

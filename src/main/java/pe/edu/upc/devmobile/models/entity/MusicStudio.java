@@ -37,9 +37,9 @@ public class MusicStudio implements Serializable {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="music_studio_owner_id")
-	@JsonBackReference
+	//@JsonBackReference
 	private MusicStudioOwner musicStudioOwner;
 
 	//Access methods

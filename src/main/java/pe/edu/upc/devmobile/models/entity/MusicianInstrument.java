@@ -26,14 +26,14 @@ public class MusicianInstrument implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="musician_id")
-	@JsonBackReference
+	//@JsonBackReference
 	private Musician musician;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="instrument_id")
-	@JsonBackReference
+	//@JsonBackReference
 	private Instrument instrument;
 	
 	//Access methods

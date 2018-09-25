@@ -37,9 +37,9 @@ public class StudioRoom implements Serializable {
 	@Range(min=0, max=200)
 	private Float priceHour;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="music_studio")
-	@JsonManagedReference
+	//@JsonManagedReference
 	private MusicStudio musicStudio;
 	
 	@NotNull

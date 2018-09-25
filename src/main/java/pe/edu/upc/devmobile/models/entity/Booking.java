@@ -51,14 +51,14 @@ public class Booking implements Serializable {
 	@Column(name="end_hour")
 	private Integer endHour;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="studio_room_id")
-	@JsonBackReference
+	//@JsonBackReference
 	private StudioRoom studioRoom;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="band_id")
-	@JsonBackReference
+	//@JsonBackReference
 	private Band band;
 
 	//Access methods

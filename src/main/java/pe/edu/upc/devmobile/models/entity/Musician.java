@@ -58,9 +58,9 @@ public class Musician implements Serializable {
 	@Email
 	private String email;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="band_id")
-	@JsonManagedReference
+	//@JsonManagedReference
 	private Band band;
 	
 	//Access methods
