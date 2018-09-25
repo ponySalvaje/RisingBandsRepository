@@ -3,7 +3,6 @@ package pe.edu.upc.devmobile.controllers.api;
 import java.net.URI;
 import java.util.List;
 
-import org.assertj.core.util.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import pe.edu.upc.devmobile.models.entity.Musician;
 import pe.edu.upc.devmobile.models.entity.Musician;
 import pe.edu.upc.devmobile.service.impl.MusicianService;
 import pe.edu.upc.devmobile.service.inter.IMusicianService;
