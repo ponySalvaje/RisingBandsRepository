@@ -18,8 +18,6 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import pe.edu.upc.devmobile.models.entity.Band;
 import pe.edu.upc.devmobile.models.entity.StudioRoom;
 
@@ -53,12 +51,10 @@ public class Booking implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="studio_room_id")
-	//@JsonBackReference
 	private StudioRoom studioRoom;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="band_id")
-	//@JsonBackReference
 	private Band band;
 
 	//Access methods

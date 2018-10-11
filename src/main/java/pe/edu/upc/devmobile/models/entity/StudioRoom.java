@@ -15,8 +15,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import pe.edu.upc.devmobile.models.entity.MusicStudio;
 
 @Entity

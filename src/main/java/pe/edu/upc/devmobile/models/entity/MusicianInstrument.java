@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import pe.edu.upc.devmobile.models.entity.Instrument;
 import pe.edu.upc.devmobile.models.entity.Musician;
 

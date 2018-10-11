@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import pe.edu.upc.devmobile.models.entity.MusicStudioOwner;
 
 @Entity
@@ -39,7 +37,6 @@ public class MusicStudio implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="music_studio_owner_id")
-	//@JsonBackReference
 	private MusicStudioOwner musicStudioOwner;
 
 	//Access methods

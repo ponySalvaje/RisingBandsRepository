@@ -19,8 +19,6 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import pe.edu.upc.devmobile.models.entity.Band;
 
 @Entity
@@ -60,7 +58,6 @@ public class Musician implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="band_id")
-	//@JsonManagedReference
 	private Band band;
 	
 	//Access methods

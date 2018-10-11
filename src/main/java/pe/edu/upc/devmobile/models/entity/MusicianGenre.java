@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import pe.edu.upc.devmobile.models.entity.Genre;
 import pe.edu.upc.devmobile.models.entity.Musician;
 
@@ -28,12 +26,10 @@ public class MusicianGenre implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="genre_id")
-	//@JsonBackReference
 	private Genre genre;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="musician_id")
-	//@JsonBackReference
 	private Musician musician;
 	
 	//Access methods

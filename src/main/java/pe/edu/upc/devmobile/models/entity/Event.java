@@ -18,8 +18,6 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import pe.edu.upc.devmobile.models.entity.Band;
 import pe.edu.upc.devmobile.models.entity.Contractor;
 
@@ -35,12 +33,10 @@ public class Event implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="contractor_id")
-	//@JsonManagedReference
 	private Contractor contractor;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="band_id")
-	//@JsonManagedReference
 	private Band band;
 	
 	@NotNull
